@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Digital Clock</title>
+        <style>
+            * {
+                padding: 0px;
+                margin: 0px;
+            }
+
+            .main {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-direction: column;
+                background-color: black;
+                height: 100vh;
+                color: white;
+            }
+
+            .box-shadow {
+                box-shadow: rgb(235 50 50 / 36%) 0px -1px 15px 3px;
+                padding: 16px 50px;
+            }
+
+            
+            
+            .hour, .minutes,.dots {
+                font-size: 150px !important;
+                font-weight: 700;
+                background: linear-gradient(to bottom, #8a3ab9 0%, #fbad50 100%);
+                background-clip: text;
+                color: transparent;
+            }
+
+            .clock {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 35px;
+                /* border: 1px solid; */
+                padding: 30px;
+            }
+
+            .date {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 35px;
+                padding: 30px;
+                font-weight: 600;
+                /* border: 1px solid; */
+            }
+
+            .ampm {
+                font-size: 20px;
+                margin-bottom: 50px;
+            }
+
+            .sec-sty {
+                padding-left: 20px;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="main">
+            <div class="box-shadow">
+                <div class="clock">
+                    <div class="hour"></div>
+                    <div class="dots"> : </div>
+                    <div class="minutes"></div>
+                    <div class="sec-sty">
+                        <div class="ampm"></div>
+                        <div class="secs"></div>
+                    </div>
+                </div>
+                <div class="date">
+                    <div class="month"></div>&nbsp;, &nbsp;
+                    <div class="day"></div>&nbsp;
+                    <div class="currentDate"></div>&nbsp; &nbsp;
+                    <div class="year"></div>
+                </div>
+            </div>
+
+            <script>
+                setInterval(() => {
+                    var d = new Date()
+                    var days = ["SUN", "MON", "TUE", "WED", "THU", "FIR", "SAT"]
+                    var months = ["JUN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUS", "SEP", "OCT", "NOV", "DEC"]
+                    document.querySelector('.hour').innerHTML = d.getHours()
+                    document.querySelector('.minutes').innerHTML = d.getMinutes()
+                    document.querySelector('.secs').innerHTML = d.getSeconds()
+                    document.querySelector('.day').innerHTML = days[d.getDay()]
+                    document.querySelector('.currentDate').innerHTML = d.getDate()
+                    document.querySelector('.month').innerHTML = months[d.getMonth()]
+                    document.querySelector('.year').innerHTML = d.getFullYear()
+                    if (d.getHours() >= 12) {
+                        document.querySelector('.ampm').innerHTML = "PM"
+                    } else {
+                        document.querySelector('.ampm').innerHTML = "AM"
+                    }
+                }, 1000)
+            </script>
+        </div>
+    </body>
+
+</html>
